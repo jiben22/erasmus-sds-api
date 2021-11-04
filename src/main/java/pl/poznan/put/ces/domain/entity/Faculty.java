@@ -1,6 +1,7 @@
 package pl.poznan.put.ces.domain.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NonNull;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "Faculty")
+@Getter
 public class Faculty implements Serializable {
 
     /**

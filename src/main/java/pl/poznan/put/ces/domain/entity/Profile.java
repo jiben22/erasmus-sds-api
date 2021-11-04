@@ -1,6 +1,9 @@
 package pl.poznan.put.ces.domain.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
