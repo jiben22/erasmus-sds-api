@@ -19,21 +19,21 @@ import java.io.Serializable;
 public class Faculty implements Serializable {
 
     /**
-     * Faculty name
+     * Faculty id
      */
     @Id
+    @Size(min = 1)
+    @NonNull
+    private String id;
+
+
+    /**
+     * Name
+     */
     @Column(nullable = false)
     @Size(min = 1)
     @NonNull
     private String name;
-
-    /**
-     * Description
-     */
-    @Column(nullable = false)
-    @Size(min = 1)
-    @NonNull
-    private String description;
 
     /**
      * Image URL
@@ -41,5 +41,5 @@ public class Faculty implements Serializable {
     @Column(nullable = false)
     @Size(min = 1)
     @NonNull
-    private String image;
+    private String imageUrl;
 }
