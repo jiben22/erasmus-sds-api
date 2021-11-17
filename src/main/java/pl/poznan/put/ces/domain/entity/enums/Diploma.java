@@ -10,10 +10,10 @@ import lombok.Getter;
 @Getter
 public enum Diploma {
 
-    BSC("BSC", "B.Sc."),
-    MASTER("MASTER", "Master"),
-    PHD("PHD", "Phd");
+    BSC("B.Sc.", "BSC"),
+    MASTER("Master", "MASTER"),
+    PHD("Phd", "PHD");
 
-    public final String value;
     public final String name;
+    public final String value;
 }
