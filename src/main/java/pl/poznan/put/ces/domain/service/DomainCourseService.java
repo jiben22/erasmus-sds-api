@@ -18,12 +18,12 @@ public class DomainCourseService implements CourseService {
     private final CourseRepository repository;
 
     @Override
-    public List<Course> getCourses() {
-        return repository.findAll();
+    public List<Course> getCourses(String facultyId) {
+        return repository.findAllByFacultyId(facultyId);
     }
 
     @Override
-    public Course getCourse(String title) {
-        return repository.findByTitle(title).orElseThrow(() -> new FacultyNotFoundException(title));
+    public Course getCourse(String facultyId, String id) {
+        return repository.findByFacultyIdAndId(facultyId, id).orElseThrow(() -> new FacultyNotFoundException(id));
     }
 }

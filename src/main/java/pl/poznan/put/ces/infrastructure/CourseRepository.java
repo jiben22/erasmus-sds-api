@@ -1,5 +1,6 @@
 package pl.poznan.put.ces.infrastructure;
 
+import lombok.NonNull;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pl.poznan.put.ces.domain.entity.Course;
@@ -13,6 +14,6 @@ import java.util.Optional;
 @Repository
 public interface CourseRepository extends CrudRepository<Course, String> {
 
-    List<Course> findAll();
-    Optional<Course> findByTitle(String title);
+    List<Course> findAllByFacultyId(@NonNull String facultyId);
+    Optional<Course> findByFacultyIdAndId(@NonNull String facultyId, String id);
 }

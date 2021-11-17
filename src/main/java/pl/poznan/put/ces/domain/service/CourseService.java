@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface CourseService {
 
-    List<Course> getCourses();
-    Course getCourse(String title);
+    List<Course> getCourses(String facultyId);
+    Course getCourse(String facultyId, String title);
 }
