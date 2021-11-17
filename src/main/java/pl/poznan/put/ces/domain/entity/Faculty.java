@@ -1,41 +1,38 @@
 package pl.poznan.put.ces.domain.entity;
 
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NonNull;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Faculty entity
  */
 @Entity
 @Table(name = "Faculty")
-@Builder
 @Getter
 public class Faculty implements Serializable {
 
     /**
-     * Faculty name
+     * Faculty id
      */
     @Id
+    @Size(min = 1)
+    @NonNull
+    private String id;
+
+
+    /**
+     * Name
+     */
     @Column(nullable = false)
     @Size(min = 1)
     @NonNull
     private String name;
-
-    /**
-     * Description
-     */
-    @Column(nullable = false)
-    @Size(min = 1)
-    @NonNull
-    private String description;
 
     /**
      * Image URL
@@ -43,5 +40,12 @@ public class Faculty implements Serializable {
     @Column(nullable = false)
     @Size(min = 1)
     @NonNull
-    private String image;
+    private String imageUrl;
+
+    /**
+     * Represent list of courses link to the current faculty
+     */
+    @OneToMany(mappedBy="faculty")
+    @JsonManagedReference
+    private Set<Course> courses;
 }

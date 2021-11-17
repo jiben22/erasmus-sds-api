@@ -28,12 +28,12 @@ public class CourseController {
     }
 
     @GetMapping(produces = "application/json")
-    public List<Course> getCourses() {
-        return courseService.getCourses();
+    public List<Course> getCourses(@PathVariable String facultyId) {
+        return courseService.getCourses(facultyId);
     }
 
     @GetMapping(value = GET_COURSE_URL,  produces = "application/json")
-    public Course getCourse(@PathVariable String title) {
-        return courseService.getCourse(title);
+    public Course getCourse(@PathVariable String facultyId, @PathVariable String title) {
+        return courseService.getCourse(facultyId, title);
     }
 }
