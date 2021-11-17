@@ -2,6 +2,7 @@ package pl.poznan.put.ces.domain.entity;
 
 import lombok.Getter;
 import lombok.NonNull;
+import pl.poznan.put.ces.domain.entity.enums.Diploma;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -58,4 +59,12 @@ public class Course implements Serializable {
     @Size(min = 1)
     @NonNull
     private String descriptionCard;
+
+    /**
+     * Diploma
+     */
+    @Column(nullable = false)
+    @Size(min = 1)
+    @NonNull
+    private Diploma diploma;
 }

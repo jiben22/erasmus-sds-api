@@ -24,6 +24,6 @@ public class DomainCourseService implements CourseService {
 
     @Override
     public Course getCourse(String title) {
-        return repository.findByName(title).orElseThrow(() -> new FacultyNotFoundException(title));
+        return repository.findByTitle(title).orElseThrow(() -> new FacultyNotFoundException(title));
     }
 }
