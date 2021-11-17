@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import pl.poznan.put.ces.domain.entity.enums.Diploma;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -31,6 +28,7 @@ public class Course implements Serializable {
     /**
      * Description
      */
+    @Lob
     @Column(nullable = false)
     @Size(min = 1)
     @NonNull
