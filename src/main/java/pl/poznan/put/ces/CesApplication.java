@@ -19,6 +19,9 @@ public class CesApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/faculties").allowedOrigins("*");
+				registry.addMapping("/faculties/*").allowedOrigins("*");
+				registry.addMapping("/faculties/*/courses").allowedOrigins("*");
+				registry.addMapping("/faculties/*/courses/*").allowedOrigins("*");
 			}
 		};
 	}

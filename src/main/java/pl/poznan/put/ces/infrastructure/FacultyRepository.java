@@ -14,5 +14,5 @@ import java.util.Optional;
 public interface FacultyRepository extends CrudRepository<Faculty, String> {
 
     List<Faculty> findAll();
-    Optional<Faculty> findByName(String name);
+    Optional<Faculty> findById(String id);
 }

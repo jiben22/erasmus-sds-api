@@ -4,15 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * Diploma enumeration
+ * Semester enumeration
  */
 @AllArgsConstructor
 @Getter
-public enum Diploma {
+public enum Semester {
 
-    BSC("Bsc", "BSC"),
-    MASTER("Master", "MASTER"),
-    PHD("Phd", "PHD");
+    FALL("Fall", "FALL"),
+    WINTER("Winter", "WINTER"),
+    SPRING("Spring", "SPRING"),
+    SUMMER("Summer", "SUMMER");
 
     public final String name;
     public final String value;

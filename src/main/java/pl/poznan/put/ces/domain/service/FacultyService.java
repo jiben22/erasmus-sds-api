@@ -10,5 +10,5 @@ import java.util.List;
 public interface FacultyService {
 
     List<Faculty> getFaculties();
-    Faculty getFaculty(String name);
+    Faculty getFaculty(String id);
 }

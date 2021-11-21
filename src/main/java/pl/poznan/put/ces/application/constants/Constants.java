@@ -6,13 +6,13 @@ public class Constants {
         private FacultyController() {}
 
         public static final String BASE_URL = "/faculties";
-        public static final String GET_FACULTY_URL = "/{name}";
+        public static final String GET_FACULTY_URL = "/{id}";
     }
 
     public static final class CourseController {
         private CourseController() {}
 
         public static final String BASE_URL = "/faculties/{facultyId}/courses";
-        public static final String GET_COURSE_URL = "/{title}";
+        public static final String GET_COURSE_URL = "/{id}";
     }
 }
