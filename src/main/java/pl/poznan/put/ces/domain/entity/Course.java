@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NonNull;
 import pl.poznan.put.ces.domain.entity.enums.Diploma;
+import pl.poznan.put.ces.domain.entity.enums.Semester;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -57,6 +58,14 @@ public class Course implements Serializable {
     @Size(min = 1)
     @NonNull
     private Integer hours;
+
+    /**
+     * Semester
+     */
+    @Column(nullable = false)
+    @Size(min = 1)
+    @NonNull
+    private Semester semester;
 
     /**
      * Description Card

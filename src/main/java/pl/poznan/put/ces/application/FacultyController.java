@@ -1,5 +1,6 @@
 package pl.poznan.put.ces.application;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import static pl.poznan.put.ces.application.constants.Constants.FacultyControlle
 /**
  * Faculty controller
  */
+@Slf4j
 @RestController
 @RequestMapping(BASE_URL)
 public class FacultyController {
@@ -33,7 +35,7 @@ public class FacultyController {
     }
 
     @GetMapping(value = GET_FACULTY_URL,  produces = "application/json")
-    public Faculty getFaculty(@PathVariable String name) {
-        return facultyService.getFaculty(name);
+    public Faculty getFaculty(@PathVariable String id) {
+        return facultyService.getFaculty(id);
     }
 }

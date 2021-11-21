@@ -23,7 +23,7 @@ public class DomainFacultyService implements FacultyService {
     }
 
     @Override
-    public Faculty getFaculty(String name) {
-        return repository.findByName(name).orElseThrow(() -> new FacultyNotFoundException(name));
+    public Faculty getFaculty(String id) {
+        return repository.findById(id).orElseThrow(() -> new FacultyNotFoundException(id));
     }
 }
