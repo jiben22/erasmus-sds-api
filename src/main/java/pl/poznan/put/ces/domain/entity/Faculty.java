@@ -13,6 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "Faculty")
+@NoArgsConstructor
 @Builder
 @Getter
 public class Faculty implements Serializable {
