@@ -47,7 +47,6 @@ public class Course implements Serializable {
      * Ects
      */
     @Column(nullable = false)
-    @Size(min = 1)
     @NonNull
     private Integer ects;
 
@@ -55,7 +54,6 @@ public class Course implements Serializable {
      * Hours
      */
     @Column(nullable = false)
-    @Size(min = 1)
     @NonNull
     private Integer hours;
 
@@ -63,7 +61,6 @@ public class Course implements Serializable {
      * Semester
      */
     @Column(nullable = false)
-    @Size(min = 1)
     @NonNull
     private Semester semester;
 
@@ -79,7 +76,6 @@ public class Course implements Serializable {
      * Diploma
      */
     @Column(nullable = false)
-    @Size(min = 1)
     @NonNull
     private Diploma diploma;
 

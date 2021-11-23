@@ -1,8 +1,7 @@
 package pl.poznan.put.ces.domain.entity;
 
+import lombok.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Getter;
-import lombok.NonNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -14,6 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "Faculty")
+@Builder
 @Getter
 public class Faculty implements Serializable {
 
@@ -48,4 +48,15 @@ public class Faculty implements Serializable {
     @OneToMany(mappedBy="faculty")
     @JsonManagedReference
     private Set<Course> courses;
+
+    /**
+     * Constructor of a Faculty
+     */
+    @Builder
+    private Faculty(String id, String name, String imageUrl, Set<Course> courses) {
+        this.id = id;
+        this.name = name;
+        this.imageUrl = imageUrl;
+        this.courses = courses;
+    }
 }

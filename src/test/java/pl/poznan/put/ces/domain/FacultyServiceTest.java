@@ -47,7 +47,6 @@ public class FacultyServiceTest {
         );
     }
 
-    /*
     @DisplayName("Get faculty with an id")
     @Test
     public void getFaculty(){
@@ -64,6 +63,5 @@ public class FacultyServiceTest {
         when(facultyRepository.findById(anyString())).thenReturn(Optional.empty());
         assertThrows(FacultyNotFoundException.class, () -> facultyService.getFaculty("XXX"));
     }
-    */
 }
 

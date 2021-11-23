@@ -10,16 +10,14 @@ public class FacultyFactory {
     public static Faculty getFaculty1(){
         return Faculty.builder()
                 .name("Architecture")
-                .description("X")
-                .image("faculty-architecture.webp")
+                .imageUrl("faculty-architecture.webp")
                 .build();
     }
 
     public static Faculty getFaculty2(){
         return Faculty.builder()
                 .name("Automatic Control, Robotics & Electrical Engineering")
-                .description("X")
-                .image("faculty-automatic-control-robotics-electrical-engineering.webp")
+                .imageUrl("faculty-automatic-control-robotics-electrical-engineering.webp")
                 .build();
     }
 }
