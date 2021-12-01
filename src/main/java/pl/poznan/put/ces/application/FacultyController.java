@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.poznan.put.ces.application.response.FacultyDto;
+import pl.poznan.put.ces.application.response.FacultyResponseDto;
 import pl.poznan.put.ces.domain.entity.Faculty;
 import pl.poznan.put.ces.domain.service.FacultyService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static pl.poznan.put.ces.application.constants.Constants.FacultyController.BASE_URL;
 import static pl.poznan.put.ces.application.constants.Constants.FacultyController.GET_FACULTY_URL;
@@ -30,12 +34,12 @@ public class FacultyController {
     }
 
     @GetMapping(produces = "application/json")
-    public List<Faculty> getFaculties() {
-        return facultyService.getFaculties();
+    public List<FacultyDto> getFaculties() {
+        return FacultyResponseDto.toFacultiesDto(facultyService.getFaculties());
     }
 
     @GetMapping(value = GET_FACULTY_URL,  produces = "application/json")
-    public Faculty getFaculty(@PathVariable String id) {
-        return facultyService.getFaculty(id);
+    public FacultyDto getFaculty(@PathVariable String id) {
+        return FacultyResponseDto.toFacultyDto(facultyService.getFaculty(id));
     }
 }

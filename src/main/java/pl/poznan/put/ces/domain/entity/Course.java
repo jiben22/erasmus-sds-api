@@ -1,8 +1,7 @@
 package pl.poznan.put.ces.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 import pl.poznan.put.ces.domain.entity.enums.Diploma;
 import pl.poznan.put.ces.domain.entity.enums.Semester;
 
@@ -15,6 +14,8 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "Course")
+@NoArgsConstructor
+@Builder
 @Getter
 public class Course implements Serializable {
 
@@ -70,7 +71,7 @@ public class Course implements Serializable {
     @Column(nullable = false)
     @Size(min = 1)
     @NonNull
-    private String descriptionCard;
+    private String descriptionCardUrl;
 
     /**
      * Diploma
@@ -87,4 +88,28 @@ public class Course implements Serializable {
     @JsonBackReference
     @NonNull
     private Faculty faculty;
+
+    /**
+     * Constructor of a Course
+     */
+    @Builder
+    public Course(String id,
+                   String title,
+                   String description,
+                   Integer ects,
+                   Integer hours,
+                   Semester semester,
+                   String descriptionCardUrl,
+                   Diploma diploma,
+                   Faculty faculty) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.ects = ects;
+        this.hours = hours;
+        this.semester = semester;
+        this.descriptionCardUrl = descriptionCardUrl;
+        this.diploma = diploma;
+        this.faculty = faculty;
+    }
 }

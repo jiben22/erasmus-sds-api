@@ -38,7 +38,7 @@ public class SemesterConverter implements AttributeConverter<Semester, String> {
      * column for use by the JDBC driver: i.e., persistence providers are
      * not expected to do such type conversion.
      *
-     * @param value the data from the database column to be
+     * @param name the data from the database column to be
      *               converted
      * @return the converted value to be stored in the entity
      * attribute
