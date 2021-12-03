@@ -24,6 +24,7 @@ public class CourseResponseDto {
                 .semester(course.getSemester())
                 .descriptionCardUrl(course.getDescriptionCardUrl())
                 .diploma(course.getDiploma())
+                .coordinators(course.getCoordinators())
                 .build();
     }
 }

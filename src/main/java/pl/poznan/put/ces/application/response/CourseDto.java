@@ -2,8 +2,12 @@ package pl.poznan.put.ces.application.response;
 
 import lombok.Builder;
 import lombok.Data;
+import pl.poznan.put.ces.domain.entity.Coordinator;
+import pl.poznan.put.ces.domain.entity.Course;
 import pl.poznan.put.ces.domain.entity.enums.Diploma;
 import pl.poznan.put.ces.domain.entity.enums.Semester;
+
+import java.util.Set;
 
 @Builder
 @Data
@@ -17,4 +21,5 @@ public class CourseDto {
     private Semester semester;
     private String descriptionCardUrl;
     private Diploma diploma;
+    private Set<Coordinator> coordinators;
 }

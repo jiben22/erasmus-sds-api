@@ -1,6 +1,7 @@
 package pl.poznan.put.ces.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import pl.poznan.put.ces.domain.entity.enums.Diploma;
 import pl.poznan.put.ces.domain.entity.enums.Semester;
@@ -8,6 +9,7 @@ import pl.poznan.put.ces.domain.entity.enums.Semester;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Course entity
@@ -84,10 +86,19 @@ public class Course implements Serializable {
      * Faculty
      */
     @ManyToOne
-    @JoinColumn(name="faculty_id", nullable=false)
+    @JoinColumn(name="facultyId", referencedColumnName="id", nullable=false)
     @JsonBackReference
     @NonNull
     private Faculty faculty;
+
+    /**
+     * Represent list of coordinators link to the current course
+     */
+    @ManyToMany
+    @JoinColumn(name="coordinatorEmail", referencedColumnName="email", nullable=false)
+    @JsonManagedReference
+    @NonNull
+    private Set<Coordinator> coordinators;
 
     /**
      * Constructor of a Course
@@ -101,7 +112,8 @@ public class Course implements Serializable {
                    Semester semester,
                    String descriptionCardUrl,
                    Diploma diploma,
-                   Faculty faculty) {
+                   Faculty faculty,
+                  Set<Coordinator> coordinators) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -111,5 +123,6 @@ public class Course implements Serializable {
         this.descriptionCardUrl = descriptionCardUrl;
         this.diploma = diploma;
         this.faculty = faculty;
+        this.coordinators = coordinators;
     }
 }
