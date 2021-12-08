@@ -1,5 +1,8 @@
 /*==== INSERT ====*/
 
+INSERT INTO profile (email, firstname, lastname, password) VALUES
+('arthur.coat@student.put.poznan.pl', 'Arthur', 'COAT', '$2a$10$TCdrvG6zWUwrryQ.7Id6Qe9lJCWXaykTFH1vfRyrSRkmF5KK0DoCa');
+
 INSERT INTO faculty (id, name, image_url) VALUES
 ('architecture', 'Architecture', 'faculty-architecture.webp'),
 ('automatic-control-robotics-electrical-engineering', 'Automatic Control, Robotics & Electrical Engineering', 'faculty-automatic-control-robotics-electrical-engineering.webp'),

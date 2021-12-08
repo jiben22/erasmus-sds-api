@@ -1,12 +1,11 @@
 package pl.poznan.put.ces.application;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import pl.poznan.put.ces.domain.service.ErasmusStudentService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,22 +14,33 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LoginController {
 
-    @GetMapping("/connection")
-    public String showLogin(Model model) {
-        model.addAttribute("title", "Connection");
+    @Autowired
+    private ErasmusStudentService erasmusStudentService;
 
-        return "login";
-    }
+    @GetMapping("/login")
+    public String authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password) {
+        if (erasmusStudentService.isAuthenticated(email, password)) {
+            // Send email + firstname + lastname
+            // Token
+            System.out.println("AUTHENTIFIE");
 
-    @GetMapping("/logout")
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
+        } else {
+            System.out.println("NON AUTHENTIFIE");
+            // Tell to user is not correct
         }
 
-        return "redirect:/connection";
+        return "OK";
     }
+
+//    @GetMapping("/logout")
+//    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+//
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        if (auth != null) {
+//            new SecurityContextLogoutHandler().logout(request, response, auth);
+//        }
+//
+//        return "redirect:/connection";
+//    }
 
 }

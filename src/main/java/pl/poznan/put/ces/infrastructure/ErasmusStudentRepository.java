@@ -13,6 +13,5 @@ import java.util.Optional;
 @Repository
 public interface ErasmusStudentRepository extends CrudRepository<ErasmusStudent, String> {
 
-    List<ErasmusStudent> findAll();
-    Optional<ErasmusStudent> findById(String id);
+    ErasmusStudent findByEmail(String email);
 }

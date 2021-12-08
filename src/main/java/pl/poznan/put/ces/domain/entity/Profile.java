@@ -1,9 +1,7 @@
 package pl.poznan.put.ces.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.ToString;
+import lombok.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -19,6 +17,7 @@ import java.io.Serializable;
 @MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 public abstract class Profile implements Serializable {
 
     /**
@@ -61,25 +60,9 @@ public abstract class Profile implements Serializable {
     }
 
     /**
-     * Override Builder 'password' position to encode password
-     */
-    public static class EmployeeBuilder {
-        private String password;
-
-        /**
-         * @param password Password to encode
-         * @return Builder to encode password
-         */
-        public EmployeeBuilder password(String password) {
-            this.password = encodePassword(password);
-            return this;
-        }
-    }
-
-    /**
      * Used to encode a password
      */
-    private static BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    public static BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     /**
      * Encode a password
