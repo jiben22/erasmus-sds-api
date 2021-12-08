@@ -43,7 +43,6 @@ public class CourseControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(courseController).build();
     }
 
-    //TODO: define param as "facultyId" field
     @DisplayName("Get courses")
     @Test
     public void getCourses() throws Exception {
@@ -52,7 +51,7 @@ public class CourseControllerTest {
         mockMvc.perform(get(BASE_URL, FacultyFactory.getComputingTelecommunicationsFaculty().getId()))
 //                .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string("[{\"id\":\"object-programming\",\"title\":\"Object Programming\",\"description\":\"The goal of the course is to teach students how to model and create reusable, easily-maintainable software, by using tools provided by object-oriented programming languages. Moreover, the students will learn how to create and use custom data types, how to model software systems based on clean code principles, and how to communicate their work to other programmers.\",\"ects\":4,\"hours\":60,\"semester\":\"WINTER\",\"descriptionCardUrl\":\"Object-programming.pdf\",\"diploma\":\"BSC\"},{\"id\":\"quality-management-experimental-software-engineering\",\"title\":\"Quality Management and Experimental Software Engineering\",\"description\":\"Provide students the knowledge regarding experimental Software Engineering, especially related to empirical research methods and their theoretical foundations.\",\"ects\":5,\"hours\":60,\"semester\":\"WINTER\",\"descriptionCardUrl\":\"Quality-management-and-experimental-software-engineering.pdf\",\"diploma\":\"MASTER\"}]"));
+                .andExpect(content().string("[{\"id\":\"object-programming\",\"title\":\"Object Programming\",\"description\":\"The goal of the course is to teach students how to model and create reusable, easily-maintainable software, by using tools provided by object-oriented programming languages. Moreover, the students will learn how to create and use custom data types, how to model software systems based on clean code principles, and how to communicate their work to other programmers.\",\"ects\":4,\"hours\":60,\"semester\":\"WINTER\",\"descriptionCardUrl\":\"Object-programming.pdf\",\"diploma\":\"BSC\",\"coordinators\":null},{\"id\":\"quality-management-experimental-software-engineering\",\"title\":\"Quality Management and Experimental Software Engineering\",\"description\":\"Provide students the knowledge regarding experimental Software Engineering, especially related to empirical research methods and their theoretical foundations.\",\"ects\":5,\"hours\":60,\"semester\":\"WINTER\",\"descriptionCardUrl\":\"Quality-management-and-experimental-software-engineering.pdf\",\"diploma\":\"MASTER\",\"coordinators\":null}]"));
     }
 
 //    @DisplayName("Get faculty")

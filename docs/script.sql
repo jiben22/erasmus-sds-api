@@ -20,3 +20,27 @@ INSERT INTO course (id, title, description, ects, hours, semester, description_c
 ('internet-applications','Internet Applications','Gaining knowledge about www document and application development necessary to distinguish between basic internet application architectures and methods for implementing their modules. Enhancing knowledge about network architectures, protocols, and distributed systems security. Gaining skills in web application development using advanced user interface development technologies, such as CSS, JavaScript, presentation logic development, Single Page Application Frameworks, business logic development. Gaining social competences concerning working as a part of a team, including organising team work, in particular leadership and communication in the process of group problem solving.',5,60,'Winter','Internet-applications.pdf','Bsc','computing-telecommunications'),
 ('information-theory','Information Theory','The objective of the course is to present a selection of aspects of the Information Theory, one of the most fundamental theories underlying theoretical Computer Science of modern­day. The Information Theory deals with representing, storing and communicating information expressed in the form of symbols. Owing to the fact that many important applications of this theory reach far beyond the core of Computing Science, the presented selection of aspects will be confined to the most fundamental ones, mainly those related to such domains of the Computer Science as Data Exploration and Data Compression, in particular: Lossless Data Compression. The fruits of rapid development of notions in the Information Theory, initially disputable and professedly unsolvable, have soon turned out to be incredibly useful and to have a great deal of practical value. In the modern­day these solutions show up in virtually all imaginable computer systems in existence, ones that could hardly survive nowadays without the ubiquitous multimedia content, the popularity and versatility of which has been consistently and unwaveringly influenced by the accessibility of data compression methods.',3,30,'Winter','Information-theory.pdf','Bsc','computing-telecommunications'),
 ('career-resources','Career Resources','Provide students with basic knowledge regarding interpersonal communication in the workplace. Provide students with contemporary problems of interpersonal communication. Develop students'' skills in solving problems and communicating in groups. Advancing students'' language competence towards the level at least B2 (CEFR).',2,30,'Winter','Career-resources.pdf','Bsc','computing-telecommunications');
+
+INSERT INTO coordinator (name, last_name, email) VALUES
+('Dariusz','Brzezinski','Dariusz.Brzezinski@cs.put.poznan.pl'),
+('Sylwia','Kopczyńska','Sylwia.Kopczynska@cs.put.poznan.pl'),
+('Mirosław','Ochodek','Miroslaw.Ochodek@cs.put.poznan.pl'),
+('Bartosz','Walter','Bartosz.Walter@put.poznan.pl'),
+('Michal','Mackowiak','Michal.Mackowiak@put.poznan.pl'),
+('Michal','Tomczyk','Michal.Tomczyk@cs.put.poznan.pl'),
+('Maciej','Piernik','Maciej.Piernik@cs.put.poznan.pl'),
+('Robert','Susmaga','Robert.Susmaga@cs.put.poznan.pl'),
+('Ewa','Hołubowicz','Ewa.Holubowicz@put.poznan.pl');
+
+INSERT INTO course_coordinators (course_id, coordinators_email) VALUES
+('object-programming','Dariusz.Brzezinski@cs.put.poznan.pl'),
+('quality-management-experimental-software-engineering','Sylwia.Kopczynska@cs.put.poznan.pl'),
+('quality-management-experimental-software-engineering','Miroslaw.Ochodek@cs.put.poznan.pl'),
+('software-architecture-and-verification','Bartosz.Walter@put.poznan.pl'),
+('software-architecture-and-verification','Michal.Mackowiak@put.poznan.pl'),
+('software-development-studio-2','Sylwia.Kopczynska@cs.put.poznan.pl'),
+('software-development-studio-2','Miroslaw.Ochodek@cs.put.poznan.pl'),
+('operational-research','Michal.Tomczyk@cs.put.poznan.pl'),
+('internet-applications','Maciej.Piernik@cs.put.poznan.pl'),
+('information-theory','Robert.Susmaga@cs.put.poznan.pl'),
+('career-resources','Ewa.Holubowicz@put.poznan.pl');

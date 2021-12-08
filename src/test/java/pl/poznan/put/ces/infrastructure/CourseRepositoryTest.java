@@ -47,6 +47,6 @@ public class CourseRepositoryTest {
                 CourseFactory.getObjectProgrammingCourse().getId());
         assertTrue(optionalCourse.isPresent());
         Course course = optionalCourse.get();
-        assertThat(course, samePropertyValuesAs(CourseFactory.getObjectProgrammingCourse(), "faculty"));
+        assertThat(course, samePropertyValuesAs(CourseFactory.getObjectProgrammingCourse(), "faculty", "coordinators"));
     }
 }
