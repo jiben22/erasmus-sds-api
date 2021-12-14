@@ -5,42 +5,49 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import io.jsonwebtoken.Jwts;
+import org.springframework.web.bind.annotation.RestController;
+import pl.poznan.put.ces.application.exception.UserNotFoundException;
 import pl.poznan.put.ces.domain.service.ErasmusStudentService;
 
-@RequiredArgsConstructor
-@Controller
+@Slf4j
+@RestController
 public class LoginController {
 
-    @Autowired
-    private ErasmusStudentService erasmusStudentService;
+    private final ErasmusStudentService erasmusStudentService;
 
+    @Autowired
+    public LoginController(ErasmusStudentService erasmusStudentService) {
+        this.erasmusStudentService = erasmusStudentService;
+    }
+
+    /**
+     * Authenticate user then generate JWT token
+     * @param email email
+     * @param password password
+     * @return Bearer token
+     */
     @GetMapping("/login")
-    public String authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password) {
+    public String authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password)
+            throws UserNotFoundException {
+        String token;
         if (erasmusStudentService.isAuthenticated(email, password)) {
-            // Send email + firstname + lastname
-            // Token
-            String token = null;
-            try{
-                 token = getJWTToken(email);
-            } catch (Exception e) {
-                System.out.println("error");
-            }
-            System.out.println("AUTHENTIFIE");
-            return token;
+            log.info("The user {} is authenticated", email);
+            token = getJWTToken(email);
         } else {
-            System.out.println("NON AUTHENTIFIE");
-            return null;
-            // Tell to user is not correct
+            log.error("The user {} is not authenticated", email);
+            throw new UserNotFoundException("Email or password invalid");
+            //TODO: return specific message
         }
+
+        return token;
     }
 
     private String getJWTToken(String username) {
