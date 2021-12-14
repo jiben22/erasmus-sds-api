@@ -84,4 +84,5 @@ public abstract class Profile implements Serializable {
     public boolean matchesPassword(String password) {
         return encoder.matches(password, this.password);
     }
+
 }

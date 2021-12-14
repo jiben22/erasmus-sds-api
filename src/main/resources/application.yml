@@ -3,7 +3,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/ces?serverTimezone=UTC
     username: root
-    password: qxftJiblab5
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   # ===============================
   # = JPA configurations
