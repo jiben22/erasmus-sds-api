@@ -13,5 +13,5 @@ import java.util.Optional;
 @Repository
 public interface ErasmusStudentRepository extends CrudRepository<ErasmusStudent, String> {
 
-    ErasmusStudent findByEmail(String email);
+    Optional<ErasmusStudent> findByEmail(String email);
 }

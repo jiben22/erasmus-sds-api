@@ -1,12 +1,16 @@
 package pl.poznan.put.ces.application;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import io.jsonwebtoken.Jwts;
 import org.springframework.web.bind.annotation.RestController;
-import pl.poznan.put.ces.application.exception.UserNotFoundException;
+import pl.poznan.put.ces.domain.entity.ErasmusStudent;
 import pl.poznan.put.ces.domain.service.ErasmusStudentService;
 
 @Slf4j
@@ -32,22 +36,31 @@ public class LoginController {
      * Authenticate user then generate JWT token
      * @param email email
      * @param password password
-     * @return Bearer token
+     * @return map with token, firstname and lastname of erasmus student
      */
     @GetMapping("/login")
-    public String authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password)
-            throws UserNotFoundException {
-        String token;
-        if (erasmusStudentService.isAuthenticated(email, password)) {
-            log.info("The user {} is authenticated", email);
-            token = getJWTToken(email);
-        } else {
-            log.error("The user {} is not authenticated", email);
-            throw new UserNotFoundException("Email or password invalid");
-            //TODO: return specific message
+    public ResponseEntity<Object> authenticateUser(@RequestParam("email") String email, @RequestParam("password") String password) {
+        Map<String, Object> map = new HashMap<>();
+
+        try {
+            if (erasmusStudentService.isAuthenticated(email, password)) {
+                log.info("The user {} is authenticated", email);
+                String token = getJWTToken(email);
+                ErasmusStudent erasmusStudent = erasmusStudentService.findByEmail(email);
+
+                map.put("token", token);
+                map.put("firstname", erasmusStudent.getFirstname());
+                map.put("lastname", erasmusStudent.getLastname());
+            } else {
+                log.error("The user {} is not authenticated", email);
+                throw new Exception("Email or password invalid");
+            }
+        } catch (Exception e) {
+            map.put("isSuccess", false);
+            map.put("message", e.getMessage());
         }
 
-        return token;
+        return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     private String getJWTToken(String username) {
