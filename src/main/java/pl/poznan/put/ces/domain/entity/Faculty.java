@@ -1,7 +1,7 @@
 package pl.poznan.put.ces.domain.entity;
 
-import lombok.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -54,7 +54,7 @@ public class Faculty implements Serializable {
      * Constructor of a Faculty
      */
     @Builder
-    private Faculty(String id, String name, String imageUrl, Set<Course> courses) {
+    public Faculty(String id, String name, String imageUrl, Set<Course> courses) {
         this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;

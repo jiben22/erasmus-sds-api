@@ -7,17 +7,19 @@ import pl.poznan.put.ces.domain.entity.Faculty;
  */
 public class FacultyFactory {
 
-    public static Faculty getFaculty1(){
+    public static Faculty getArchitectureFaculty() {
         return Faculty.builder()
+                .id("architecture")
                 .name("Architecture")
                 .imageUrl("faculty-architecture.webp")
                 .build();
     }
 
-    public static Faculty getFaculty2(){
+    public static Faculty getComputingTelecommunicationsFaculty() {
         return Faculty.builder()
-                .name("Automatic Control, Robotics & Electrical Engineering")
-                .imageUrl("faculty-automatic-control-robotics-electrical-engineering.webp")
+                .id("computing-telecommunications")
+                .name("Computing and Telecommunications")
+                .imageUrl("faculty-computing-telecommunications.webp")
                 .build();
     }
 }

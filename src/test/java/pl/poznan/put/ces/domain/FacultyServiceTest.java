@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.poznan.put.ces.domain.entity.Faculty;
 import pl.poznan.put.ces.domain.factory.FacultyFactory;
@@ -19,8 +18,9 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.util.Optional.ofNullable;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -34,27 +34,27 @@ public class FacultyServiceTest {
 
     @DisplayName("Get all faculties")
     @Test()
-    public void getFaculties(){
-        List<Faculty> allFaculties = Arrays.asList(FacultyFactory.getFaculty1(),
-                FacultyFactory.getFaculty1());
+    public void getFaculties() {
+        List<Faculty> allFaculties = Arrays.asList(FacultyFactory.getArchitectureFaculty(),
+                FacultyFactory.getComputingTelecommunicationsFaculty());
 
         when(facultyRepository.findAll()).thenReturn(allFaculties);
 
         List<Faculty> faculties = facultyService.getFaculties();
         AtomicInteger index = new AtomicInteger();
-        faculties.forEach(booking ->
-                assertTrue(new ReflectionEquals(allFaculties.get(index.getAndIncrement()), new String[]{"name", "description", "image"}).matches(booking))
+        faculties.forEach(faculty ->
+                assertThat(faculty, samePropertyValuesAs(allFaculties.get(index.getAndIncrement())))
         );
     }
 
     @DisplayName("Get faculty with an id")
     @Test
-    public void getFaculty(){
+    public void getFaculty() {
         when(facultyRepository.findById(anyString()))
-                .thenReturn(ofNullable(FacultyFactory.getFaculty1()));
+                .thenReturn(ofNullable(FacultyFactory.getArchitectureFaculty()));
 
-        Faculty faculty = facultyService.getFaculty(FacultyFactory.getFaculty1().getName());
-        assertTrue(new ReflectionEquals(FacultyFactory.getFaculty1(), new String[]{"name", "description", "image"}).matches(faculty));
+        Faculty faculty = facultyService.getFaculty(FacultyFactory.getArchitectureFaculty().getName());
+        assertThat(faculty, samePropertyValuesAs(FacultyFactory.getArchitectureFaculty()));
     }
 
     @DisplayName("Get faculty with an unknown id")
