@@ -18,6 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>11</java.version>
+		<passay.version>1.0</passay.version>
 		<junit.jupiter.version>5.8.1</junit.jupiter.version>
 		<mockito.version>4.0.0</mockito.version>
 		<assertj.version>3.21.0</assertj.version>
@@ -29,6 +30,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
 		</dependency>
 
 		<!-- Spring Web -->
@@ -52,6 +60,13 @@
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator-annotation-processor</artifactId>
+		</dependency>
+
+		<!-- Passay -->
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>${passay.version}</version>
 		</dependency>
 
 		<!-- Lombok -->
@@ -106,6 +121,17 @@
 			<version>${assertj.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.5.3</version>
+    </dependency>
 
 		<!-- H2Database -->
 		<dependency>
