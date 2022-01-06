@@ -24,6 +24,7 @@ public class CesApplication {
 				registry.addMapping("/faculties/*").allowedOrigins("*");
 				registry.addMapping("/faculties/*/courses").allowedOrigins("*");
 				registry.addMapping("/faculties/*/courses/*").allowedOrigins("*");
+				registry.addMapping("/faculties/*/courses/*/testimonial").allowedOrigins("*");
 				registry.addMapping("/login").allowedOrigins("*");
 				registry.addMapping("/logout").allowedOrigins("*");
 				registry.addMapping("/sign-up").allowedOrigins("*");

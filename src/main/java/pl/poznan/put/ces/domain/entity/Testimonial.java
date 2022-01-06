@@ -1,10 +1,7 @@
 package pl.poznan.put.ces.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -25,9 +22,8 @@ public class Testimonial implements Serializable {
      * Testimonial id
      */
     @Id
-    @Size(min = 1)
-    @NonNull
-    private String id;
+    @GeneratedValue
+    private Integer id;
 
     /**
      * Erasmus student
@@ -35,6 +31,7 @@ public class Testimonial implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "erasmusStudentEmail", referencedColumnName = "email", nullable = false)
     @NonNull
+    @Setter
     private ErasmusStudent erasmusStudent;
 
     /**
@@ -56,13 +53,14 @@ public class Testimonial implements Serializable {
     @JoinColumn(name="courseId", referencedColumnName="id", nullable=false)
     @JsonBackReference
     @NonNull
+    @Setter
     private Course course;
 
     /**
      * Constructor of a Testimonial
      */
     @Builder
-    public Testimonial(String id,
+    public Testimonial(Integer id,
                        ErasmusStudent erasmusStudent,
                        LocalDateTime date,
                        String comment,

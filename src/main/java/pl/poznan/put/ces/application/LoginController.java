@@ -50,6 +50,7 @@ public class LoginController {
                 map.put("token", token);
                 map.put("firstname", erasmusStudent.getFirstname());
                 map.put("lastname", erasmusStudent.getLastname());
+                map.put("email", erasmusStudent.getEmail());
             } else {
                 log.error("The user {} is not authenticated", email);
                 throw new Exception("Email or password invalid");

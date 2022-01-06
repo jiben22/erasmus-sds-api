@@ -1,7 +1,6 @@
 package pl.poznan.put.ces.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -99,7 +98,7 @@ public class Course implements Serializable {
      */
     @ManyToMany
     @JoinColumn(name="coordinatorEmail", referencedColumnName="email", nullable=false)
-    @JsonManagedReference
+//    @JsonManagedReference
     @NonNull
     private Set<Coordinator> coordinators;
 
@@ -107,7 +106,7 @@ public class Course implements Serializable {
      * Represent list of testimonials of this course
      */
     @OneToMany(mappedBy="course")
-    @JsonManagedReference
+//    @JsonManagedReference
     private Set<Testimonial> testimonials;
 
     /**

@@ -36,4 +36,15 @@ public class DomainCourseService implements CourseService {
     public Course getCourse(String facultyId, String id) {
         return repository.findByFacultyIdAndId(facultyId, id).orElseThrow(() -> new CourseNotFoundException(facultyId, id));
     }
+
+    @Override
+    public Boolean updateCourse(Course course) {
+        try {
+            repository.save(course);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            log.error("Error when adding a testimonial in the course: {}", course.getId(), e);
+            return Boolean.FALSE;
+        }
+    }
 }
