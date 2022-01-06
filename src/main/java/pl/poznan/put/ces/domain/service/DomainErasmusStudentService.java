@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import pl.poznan.put.ces.domain.entity.ErasmusStudent;
 import pl.poznan.put.ces.domain.entity.Profile;
 import pl.poznan.put.ces.domain.service.exception.ErasmusStudentNotFoundException;
-import pl.poznan.put.ces.domain.service.exception.FacultyNotFoundException;
 import pl.poznan.put.ces.infrastructure.ErasmusStudentRepository;
 
 import java.util.Optional;

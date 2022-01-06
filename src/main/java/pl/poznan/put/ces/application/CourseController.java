@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.poznan.put.ces.application.response.CourseDto;
 import pl.poznan.put.ces.application.response.CourseResponseDto;
-import pl.poznan.put.ces.domain.entity.Course;
 import pl.poznan.put.ces.domain.entity.enums.Diploma;
 import pl.poznan.put.ces.domain.service.CourseService;
 
