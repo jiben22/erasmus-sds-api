@@ -4,7 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pl.poznan.put.ces.domain.entity.ErasmusStudent;
 
-import java.util.List;
 import java.util.Optional;
 
 /**

@@ -8,12 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.poznan.put.ces.application.response.FacultyDto;
 import pl.poznan.put.ces.application.response.FacultyResponseDto;
-import pl.poznan.put.ces.domain.entity.Faculty;
 import pl.poznan.put.ces.domain.service.FacultyService;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static pl.poznan.put.ces.application.constants.Constants.FacultyController.BASE_URL;
 import static pl.poznan.put.ces.application.constants.Constants.FacultyController.GET_FACULTY_URL;

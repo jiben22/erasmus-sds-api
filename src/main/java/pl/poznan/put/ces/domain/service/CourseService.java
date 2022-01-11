@@ -13,4 +13,5 @@ public interface CourseService {
 
     List<Course> getCourses(String facultyId, Optional<Diploma> diploma);
     Course getCourse(String facultyId, String id);
+    Boolean updateCourse(Course course);
 }

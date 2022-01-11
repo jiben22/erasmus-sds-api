@@ -1,11 +1,6 @@
 package pl.poznan.put.ces.application;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +10,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import io.jsonwebtoken.Jwts;
 import org.springframework.web.bind.annotation.RestController;
 import pl.poznan.put.ces.domain.entity.ErasmusStudent;
 import pl.poznan.put.ces.domain.service.ErasmusStudentService;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -51,6 +50,7 @@ public class LoginController {
                 map.put("token", token);
                 map.put("firstname", erasmusStudent.getFirstname());
                 map.put("lastname", erasmusStudent.getLastname());
+                map.put("email", erasmusStudent.getEmail());
             } else {
                 log.error("The user {} is not authenticated", email);
                 throw new Exception("Email or password invalid");
