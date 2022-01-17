@@ -10,7 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.*;
-import pl.poznan.put.ces.domain.entity.*;
+import pl.poznan.put.ces.domain.entity.ErasmusStudent;
+import pl.poznan.put.ces.domain.entity.Student;
 import pl.poznan.put.ces.domain.service.ErasmusStudentService;
 import pl.poznan.put.ces.domain.service.StudentService;
 
@@ -91,37 +92,11 @@ public class LoginController {
 
     /**
      * Get the request to sign-up the user
-     * @param email string
-     * @param password string
-     * @param confirmPassword string
      * @return ?
      */
     @PostMapping(value = POST_SIGNUP_URL, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Boolean postSignUp(@RequestBody(required = false)
-                                          String email,
-                              @RequestBody(required = false)
-                                      String firstname,
-                              @RequestBody(required = false)
-                                          String lastname,
-                              @RequestBody(required = false)
-                                          String password,
-                              @RequestBody(required = false)
-                                          String confirmPassword) {
-        /*Student student = Student.builder()
-                .email(email)
-                .firstname(firstname)
-                .lastname(lastname)
-                .password(password)
-                .build();*/
-        Student student = new Student();
-        student.setEmail("arthur-coat@hotmail.fr");
-        student.setPassword("Azerty123%");
-        student.setFirstname("Arthur");
-        student.setLastname("Coat");
-        //if(profile.matchesPassword(confirmPassword)){
-            studentService.addStudent(student);
-            return true;
-        //};
-        //return false;
+    public Boolean postSignUp(@RequestBody Student student) {
+        studentService.addStudent(student);
+        return true;
     }
 }

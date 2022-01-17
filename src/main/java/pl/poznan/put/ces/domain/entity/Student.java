@@ -1,22 +1,23 @@
 package pl.poznan.put.ces.domain.entity;
 
-import lombok.*;
-import lombok.experimental.SuperBuilder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
  * Profile entity
  */
-
-@Data
+@Entity
+@Table(name = "Student")
+@NoArgsConstructor
+@Getter
 public class Student extends Profile implements Serializable {
 
+//    @Builder
+//    public Student(String email, String firstname, String lastname, String password) {
+//        super(email, firstname, lastname, password);
+//    }
 }
