@@ -57,6 +57,15 @@ public class LoginController {
                 map.put("firstname", erasmusStudent.getFirstname());
                 map.put("lastname", erasmusStudent.getLastname());
                 map.put("email", erasmusStudent.getEmail());
+            } else if (studentService.isAuthenticated(email, password)) {
+                log.info("The user {} is authenticated", email);
+                String token = getJWTToken(email);
+                Student student = studentService.findByEmail(email);
+
+                map.put("token", token);
+                map.put("firstname", student.getFirstname());
+                map.put("lastname", student.getLastname());
+                map.put("email", student.getEmail());
             } else {
                 log.error("The user {} is not authenticated", email);
                 throw new Exception("Email or password invalid");
