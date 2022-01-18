@@ -59,10 +59,8 @@ public class LoginController {
                 map.put("email", erasmusStudent.getEmail());
             } else if (studentService.isAuthenticated(email, password)) {
                 log.info("The user {} is authenticated", email);
-                String token = getJWTToken(email);
                 Student student = studentService.findByEmail(email);
 
-                map.put("token", token);
                 map.put("firstname", student.getFirstname());
                 map.put("lastname", student.getLastname());
                 map.put("email", student.getEmail());
