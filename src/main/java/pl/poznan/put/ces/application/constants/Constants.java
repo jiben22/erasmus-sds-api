@@ -17,6 +17,12 @@ public class Constants {
         public static final String POST_TESTIMONIAL_URL = "/{id}/testimonial";
     }
 
+    public static final class LoginController {
+        private LoginController() {}
+
+        public static final String POST_SIGNUP_URL = "/sign-up";
+    }
+
     public static final class PasswordForgotController {
 
         private PasswordForgotController() {}

@@ -5,14 +5,15 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.poznan.put.ces.domain.entity.ErasmusStudent;
+import pl.poznan.put.ces.domain.entity.Student;
 import pl.poznan.put.ces.domain.service.ErasmusStudentService;
+import pl.poznan.put.ces.domain.service.StudentService;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -20,15 +21,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static pl.poznan.put.ces.application.constants.Constants.LoginController.POST_SIGNUP_URL;
+
 @Slf4j
 @RestController
 public class LoginController {
 
     private final ErasmusStudentService erasmusStudentService;
+    private final StudentService studentService;
 
     @Autowired
-    public LoginController(ErasmusStudentService erasmusStudentService) {
+    public LoginController(ErasmusStudentService erasmusStudentService,
+                           StudentService studentService) {
         this.erasmusStudentService = erasmusStudentService;
+        this.studentService = studentService;
     }
 
     /**
@@ -51,6 +57,15 @@ public class LoginController {
                 map.put("firstname", erasmusStudent.getFirstname());
                 map.put("lastname", erasmusStudent.getLastname());
                 map.put("email", erasmusStudent.getEmail());
+            } else if (studentService.isAuthenticated(email, password)) {
+                log.info("The user {} is authenticated", email);
+                String token = getJWTToken(email);
+                Student student = studentService.findByEmail(email);
+
+                map.put("token", token);
+                map.put("firstname", student.getFirstname());
+                map.put("lastname", student.getLastname());
+                map.put("email", student.getEmail());
             } else {
                 log.error("The user {} is not authenticated", email);
                 throw new Exception("Email or password invalid");
@@ -84,15 +99,13 @@ public class LoginController {
         return "Bearer " + token;
     }
 
-//    @GetMapping("/logout")
-//    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-//
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        if (auth != null) {
-//            new SecurityContextLogoutHandler().logout(request, response, auth);
-//        }
-//
-//        return "redirect:/connection";
-//    }
-
+    /**
+     * Get the request to sign-up the user
+     * @return ?
+     */
+    @PostMapping(value = POST_SIGNUP_URL, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Boolean postSignUp(@RequestBody Student student) {
+        studentService.addStudent(student);
+        return true;
+    }
 }
