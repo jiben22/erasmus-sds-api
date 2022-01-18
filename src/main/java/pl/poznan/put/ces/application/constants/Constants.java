@@ -14,6 +14,13 @@ public class Constants {
 
         public static final String BASE_URL = "/faculties/{facultyId}/courses";
         public static final String GET_COURSE_URL = "/{id}";
+        public static final String POST_TESTIMONIAL_URL = "/{id}/testimonial";
+    }
+
+    public static final class LoginController {
+        private LoginController() {}
+
+        public static final String POST_SIGNUP_URL = "/sign-up";
     }
 
     public static final class PasswordForgotController {

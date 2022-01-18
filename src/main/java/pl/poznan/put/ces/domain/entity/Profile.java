@@ -1,6 +1,7 @@
 package pl.poznan.put.ces.domain.entity;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Column;
@@ -17,7 +18,8 @@ import java.io.Serializable;
 @MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Data
+@SuperBuilder
 public abstract class Profile implements Serializable {
 
     /**

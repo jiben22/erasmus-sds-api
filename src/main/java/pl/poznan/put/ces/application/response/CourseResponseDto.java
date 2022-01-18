@@ -1,7 +1,6 @@
 package pl.poznan.put.ces.application.response;
 
 import pl.poznan.put.ces.domain.entity.Course;
-import pl.poznan.put.ces.domain.entity.Faculty;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +24,7 @@ public class CourseResponseDto {
                 .descriptionCardUrl(course.getDescriptionCardUrl())
                 .diploma(course.getDiploma())
                 .coordinators(course.getCoordinators())
+                .testimonials(course.getTestimonials())
                 .build();
     }
 }

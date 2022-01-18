@@ -1,7 +1,5 @@
 package pl.poznan.put.ces.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
